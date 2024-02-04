@@ -1,0 +1,76 @@
+{
+  "name": "eslint-config-uiolee",
+  "version": "0.0.0",
+  "description": "eslint flat-config",
+  "keywords": [
+    "eslint",
+    "config",
+    "flat-config",
+    "module"
+  ],
+  "license": "MPL-2.0",
+  "author": "uiolee (https://github.com/uiolee)",
+  "type": "module",
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./js": "./lib/config/js.js",
+    "./ts": "./lib/config/ts.js",
+    "./jest": "./lib/config/jest.js",
+    "./package.json": "./package.json"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "pnpm esb",
+    "esb": "rm -rf lib && node scripts/esb.mjs",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:type": "tsc --noEmit",
+    "sort": "sort-package-json",
+    "tsb": "tsc -b -v",
+    "tsbf": "tsc -b -v -f",
+    "tsbw": "tsc -b -v -w"
+  },
+  "dependencies": {
+    "@eslint/eslintrc": "^3.0.0",
+    "@eslint/js": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.3",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "^5.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "esbuild": "^0.20.0",
+    "esbuild-register": "^3.5.0",
+    "eslint": "9.0.0-alpha.2",
+    "sort-package-json": "^2.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "@eslint/eslintrc": "^3.0.0",
+    "@eslint/js": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.23 || >8.23",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.3",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "^5.1.3"
+  },
+  "peerDependenciesMeta": {
+    "*": {
+      "optional": false
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "packageManager": "pnpm@8.15.1+sha256.245fe901f8e7fa8782d7f17d32b6a83995e2ae03984cb5b62b8949bfdc27c7b5"
+}
