@@ -8,12 +8,13 @@
     "flat-config",
     "module"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uiolee/eslint-config-uiolee.git"
+  },
   "license": "MPL-2.0",
   "author": "uiolee (https://github.com/uiolee)",
   "type": "module",
-  "files": [
-    "lib"
-  ],
   "exports": {
     ".": "./lib/index.js",
     "./js": "./lib/config/js.js",
@@ -22,6 +23,9 @@
     "./package.json": "./package.json"
   },
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "pnpm esb",
     "esb": "rm -rf lib && node scripts/esb.mjs",
@@ -68,9 +72,9 @@
       "optional": false
     }
   },
+  "packageManager": "pnpm@8.15.1+sha256.245fe901f8e7fa8782d7f17d32b6a83995e2ae03984cb5b62b8949bfdc27c7b5",
   "publishConfig": {
     "access": "public",
     "provenance": true
-  },
-  "packageManager": "pnpm@8.15.1+sha256.245fe901f8e7fa8782d7f17d32b6a83995e2ae03984cb5b62b8949bfdc27c7b5"
+  }
 }
