@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: ${{env.default_node_version}}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         # with:
         #   version: 8
@@ -76,7 +76,7 @@ jobs:
         with:
           node-version: ${{env.default_node_version}}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         # with:
         #   version: 8
@@ -123,7 +123,7 @@ jobs:
   #       with:
   #         node-version: ${{env.default_node_version}}
 
-  #     - uses: pnpm/action-setup@v2
+  #     - uses: pnpm/action-setup@v3
   #       name: Install pnpm
   #       # with:
   #       #   version: 8
