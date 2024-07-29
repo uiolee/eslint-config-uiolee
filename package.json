@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@eslint/eslintrc": "^3.0.2",
-    "@eslint/js": "^9.1.1",
+    "@eslint/js": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
     "eslint-config-prettier": "^9.1.0",
@@ -58,7 +58,7 @@
   },
   "peerDependencies": {
     "@eslint/eslintrc": "^3.0.2",
-    "@eslint/js": "^9.1.1",
+    "@eslint/js": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
     "eslint": "^9.1.0",
