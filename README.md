@@ -14,3 +14,17 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/eslint-config-uiolee?logo=npm)](#eslint-config-uiolee)
 [![NPM Downloads](https://img.shields.io/npm/dt/eslint-config-uiolee?logo=npm)](#eslint-config-uiolee)
 [![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/eslint-config-uiolee?logo=librariesdotio)](https://libraries.io/npm/eslint-config-uiolee/tree)
+
+## Example
+
+```javascript eslint.config.mjs
+// eslint.config.mjs
+import { js, ts, jest } from "eslint-config-uiolee/configs";
+
+export default [
+  ...js,
+  ...ts,
+  // ...jest,
+  { ignores: ["build/**", "dist/**"] },
+];
+```
