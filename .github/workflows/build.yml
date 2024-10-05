@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       cache:
-        description: "(boolean) use actions/cache"
+        description: "(boolean) enable cache for pnpm"
         required: false
         default: true
         type: boolean
@@ -18,6 +18,16 @@ on:
         required: false
         default: "ubuntu-latest"
         type: string
+      pnpm_version:
+        description: "(string) "
+        required: false
+        default: "latest"
+        type: string
+
+env:
+  default_node_version: "lts/*"
+  default_pnpm_version: "latest"
+  artifact_name: build_${{ github.sha }}
 
 jobs:
   build:
@@ -26,29 +36,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: ${{ inputs.pnpm_version }}
+
       - uses: actions/setup-node@v4
+        name: Setup Node without cache
+        if: ${{ !inputs.cache }}
         with:
           node-version: ${{ inputs.node_version }}
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        # with:
-        #   version: 8
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
+      - uses: actions/setup-node@v4
+        name: Setup Node with cache
         if: ${{ inputs.cache }}
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: ${{ inputs.node_version }}
+          cache: "pnpm"
 
       - name: Install Dependencies
         run: pnpm i
@@ -56,13 +60,13 @@ jobs:
       - name: Build
         run: |
           pnpm run build
-          touch .gitkeep
 
       - uses: actions/upload-artifact@v4
         with:
           retention-days: 1
           compression-level: 1
-          name: artifact
+          name: ${{ env.artifact_name }}
           path: |
             lib
-            .gitkeep
+            dist
+            LICENSE

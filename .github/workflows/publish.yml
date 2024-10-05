@@ -18,6 +18,11 @@ on:
     tags:
       - "v*.*.*"
 
+env:
+  default_node_version: "lts/*"
+  default_pnpm_version: "latest"
+  artifact_name: build_${{ github.sha }}
+
 jobs:
   build:
     uses: ./.github/workflows/build.yml
@@ -35,7 +40,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: artifact
+          name: ${{ env.artifact_name }}
 
       - uses: actions/setup-node@v4
         with:
@@ -71,7 +76,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: artifact
+          name: ${{ env.artifact_name }}
 
       - name: rename package name
         run: |
@@ -80,3 +85,18 @@ jobs:
       - run: npm publish --access public --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  release:
+    name: Release
+    needs: publish-npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      discussions: write
+    steps:
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          generate_release_notes: true
+          discussion_category_name: "Announcements"
