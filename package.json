@@ -40,7 +40,6 @@
   },
   "dependencies": {
     "@eslint/js": "^9.12.0",
-    "@tsconfig/node-lts": "^22.0.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.8.3",
     "eslint-plugin-n": "^17.10.3",
@@ -49,6 +48,7 @@
     "typescript-eslint": "^8.8.0"
   },
   "devDependencies": {
+    "@tsconfig/node-lts": "^22.0.1",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.7.4",
     "esbuild": "^0.24.0",
@@ -60,7 +60,6 @@
   },
   "peerDependencies": {
     "@eslint/js": "^9.12.0",
-    "@tsconfig/node-lts": "^22.0.1",
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.8.3",
