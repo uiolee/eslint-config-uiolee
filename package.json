@@ -50,7 +50,7 @@
   "devDependencies": {
     "@tsconfig/node-lts": "^22.0.1",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.7.4",
+    "@types/node": "^24.0.8",
     "esbuild": "^0.25.0",
     "esbuild-register": "^3.6.0",
     "eslint": "^9.12.0",
