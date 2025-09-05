@@ -5,13 +5,13 @@ on:
     branches:
       - "main"
     paths:
-      - "src/**.tsx?"
+      - "src"
       - "package.json"
       - "tsconfig.json"
       - ".github/workflows/ci.yml"
   pull_request:
     paths:
-      - "src/**.tsx?"
+      - "src"
       - "scripts/**"
       - "package.json"
       - "tsconfig.json"
@@ -78,6 +78,39 @@ jobs:
         run: |
           pnpm run lint
 
+  release-please:
+    needs: build
+    if: ${{ github.event_name == 'push' && github.ref_name == 'main'}}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # release-please-action
+      pull-requests: write  # release-please-action
+      id-token: write       # npm publish --provenance
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+
+      - uses: actions/checkout@v5
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          submodules: "recursive"
+
+      - uses: actions/download-artifact@v5
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          name: ${{ env.artifact_name }}
+
+      - uses: actions/setup-node@v4
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm publish --provenance --access public --registry=https://registry.npmjs.org/
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
   # test:
   #   name: Test
   #   needs:
