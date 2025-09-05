@@ -1,6 +1,5 @@
 import type { Config } from "../types.js";
 
-// @ts-expect-error lack of type defination
 import eslintPluginJest from "eslint-plugin-jest";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
