@@ -8,12 +8,18 @@ import { setNameDefault } from "../utils/setNameDefault.js";
 
 const configArray: Config[] = tseslint.config({
   extends: [
-    ...tseslint.configs.recommended.map((config) => {
-      if (config.name == "typescript-eslint/recommended") {
-        config.files = ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"];
-      }
-      return config;
-    }),
+    ...tseslint.configs.recommended.map(
+      (
+        config: (typeof tseslint.configs.recommended)[number] & {
+          files?: string[];
+        },
+      ) => {
+        if (config.name == "typescript-eslint/recommended") {
+          config.files = ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"];
+        }
+        return config;
+      },
+    ),
 
     setNameDefault(
       "prettier/plugin/recommended",
