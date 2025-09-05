@@ -15,8 +15,8 @@ importers:
         specifier: ^10.1.8
         version: 10.1.8(eslint@9.34.0)
       eslint-plugin-jest:
-        specifier: ^28.14.0
-        version: 28.14.0(@typescript-eslint/eslint-plugin@8.42.0(@typescript-eslint/parser@8.42.0(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2)
+        specifier: ^29.0.1
+        version: 29.0.1(@typescript-eslint/eslint-plugin@8.42.0(@typescript-eslint/parser@8.42.0(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2)
       eslint-plugin-n:
         specifier: ^17.21.3
         version: 17.21.3(eslint@9.34.0)(typescript@5.9.2)
@@ -500,12 +500,12 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-jest@28.14.0:
-    resolution: {integrity: sha512-P9s/qXSMTpRTerE2FQ0qJet2gKbcGyFTPAJipoKxmWqR6uuFqIqk8FuEfg5yBieOezVrEfAMZrEwJ6yEp+1MFQ==}
-    engines: {node: ^16.10.0 || ^18.12.0 || >=20.0.0}
+  eslint-plugin-jest@29.0.1:
+    resolution: {integrity: sha512-EE44T0OSMCeXhDrrdsbKAhprobKkPtJTbQz5yEktysNpHeDZTAL1SfDTNKmcFfJkY6yrQLtTKZALrD3j/Gpmiw==}
+    engines: {node: ^20.12.0 || ^22.0.0 || >=24.0.0}
     peerDependencies:
-      '@typescript-eslint/eslint-plugin': ^6.0.0 || ^7.0.0 || ^8.0.0
-      eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
+      '@typescript-eslint/eslint-plugin': ^8.0.0
+      eslint: ^8.57.0 || ^9.0.0
       jest: '*'
     peerDependenciesMeta:
       '@typescript-eslint/eslint-plugin':
@@ -1306,7 +1306,7 @@ snapshots:
       eslint: 9.34.0
       eslint-compat-utils: 0.5.1(eslint@9.34.0)
 
-  eslint-plugin-jest@28.14.0(@typescript-eslint/eslint-plugin@8.42.0(@typescript-eslint/parser@8.42.0(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2):
+  eslint-plugin-jest@29.0.1(@typescript-eslint/eslint-plugin@8.42.0(@typescript-eslint/parser@8.42.0(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2):
     dependencies:
       '@typescript-eslint/utils': 8.42.0(eslint@9.34.0)(typescript@5.9.2)
       eslint: 9.34.0
