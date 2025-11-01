@@ -38,7 +38,7 @@ jobs:
         with:
           version: ${{env.default_pnpm_version}}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{env.default_node_version}}
           cache: pnpm
@@ -66,7 +66,7 @@ jobs:
         with:
           version: ${{env.default_pnpm_version}}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{env.default_node_version}}
           cache: pnpm
@@ -103,7 +103,7 @@ jobs:
         with:
           name: ${{ env.artifact_name }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         if: ${{ steps.release.outputs.release_created }}
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -134,7 +134,7 @@ jobs:
   #       with:
   #         version: ${{env.default_pnpm_version}}
 
-  #     - uses: actions/setup-node@v4
+  #     - uses: actions/setup-node@v6
   #       with:
   #         node-version: ${{env.default_node_version}}
   #         cache: pnpm
