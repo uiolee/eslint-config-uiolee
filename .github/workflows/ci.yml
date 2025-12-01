@@ -31,7 +31,7 @@ jobs:
     name: Type Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
@@ -55,7 +55,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - uses: actions/download-artifact@v5
         with:
@@ -93,7 +93,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         if: ${{ steps.release.outputs.release_created }}
         with:
           submodules: "recursive"
@@ -123,7 +123,7 @@ jobs:
   #       os: [ubuntu-latest, windows-latest, macos-latest]
   #     fail-fast: false
   #   steps:
-  #     - uses: actions/checkout@v5
+  #     - uses: actions/checkout@v6
 
   #     - uses: actions/download-artifact@v5
   #       with:
