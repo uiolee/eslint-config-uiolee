@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/uiolee/eslint-config-uiolee/compare/v0.3.0...v0.3.1) (2026-04-08)
+
+
+### Bug Fixes
+
+* **ci/publish:** fix wrong syntax in environment ([54718f3](https://github.com/uiolee/eslint-config-uiolee/commit/54718f3d0d43bfc075fcaebb4097801cb9dc10a1))
+
 ## [0.3.0](https://github.com/uiolee/eslint-config-uiolee/compare/v0.2.5...v0.3.0) (2026-04-08)
 
 
