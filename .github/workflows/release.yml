@@ -73,6 +73,49 @@ jobs:
           node-version: ${{ env.default_node_version }}
           registry-url: ${{ env.registry_url }}
 
-      - name: publish
+      - run: npm publish --provenance --access public --registry=${{ env.registry_url }}
         if: ${{ needs.release-please.outputs.release_created }}
-        run: npm publish --provenance --access public --registry=${{ env.registry_url }}
+        
+
+  publish-ghp:
+    needs: release-please
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    if: ${{ needs.release-please.outputs.release_created }}
+    env:
+      SCOPE: "@${{ github.repository_owner }}"
+      registry_url: "https://npm.pkg.github.com/"
+    environment:
+      name: Github Packages
+      url: https://github.com/uiolee/eslint-config-uiolee/pkgs/npm/eslint-config-uiolee
+      deployment: ${{ needs.release-please.outputs.release_created }}
+    steps:
+      - uses: actions/checkout@v6
+        if: ${{ needs.release-please.outputs.release_created }}
+        with:
+          submodules: "recursive"
+
+      - uses: actions/download-artifact@v8
+        if: ${{ needs.release-please.outputs.release_created }}
+        with:
+          name: ${{ env.artifact_name }}
+
+      - uses: actions/setup-node@v6
+        if: ${{ needs.release-please.outputs.release_created }}
+        with:
+          node-version: ${{ env.default_node_version }}
+          registry-url: ${{ env.registry_url }}
+          # Defaults to the user or organization that owns the workflow file
+          scope: ${{ env.SCOPE }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: rename package name
+        run: |
+          node ./scripts/renamePackage.mjs
+
+      - run: npm publish --access public --registry=${{ env.registry_url }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
