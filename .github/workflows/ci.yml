@@ -83,9 +83,9 @@ jobs:
     if: ${{ github.event_name == 'push' && github.ref_name == 'main'}}
     runs-on: ubuntu-latest
     permissions:
-      contents: write       # release-please-action
-      pull-requests: write  # release-please-action
-      id-token: write       # npm publish --provenance
+      contents: write # release-please-action
+      pull-requests: write # release-please-action
+      id-token: write # npm publish --provenance
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
@@ -106,12 +106,12 @@ jobs:
       - uses: actions/setup-node@v6
         if: ${{ steps.release.outputs.release_created }}
         with:
-          registry-url: 'https://registry.npmjs.org'
+          node-version: ${{env.default_node_version}}
+          registry-url: "https://registry.npmjs.org"
 
       - run: npm publish --provenance --access public --registry=https://registry.npmjs.org/
         if: ${{ steps.release.outputs.release_created }}
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
   # test:
   #   name: Test
   #   needs:
