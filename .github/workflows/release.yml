@@ -1,0 +1,77 @@
+name: release
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+env:
+  default_node_version: "lts/*"
+  default_pnpm_version: "latest"
+  artifact_name: build_${{ github.sha }}
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+
+  release-please:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          config-file: release-please-config.json
+
+  publish-npm:
+    needs: release-please
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm trust publisher
+    if: ${{ needs.release-please.outputs.release_created }}
+    env:
+      registry_url: "https://registry.npmjs.org"
+    environment:
+      name: npmjs
+      url: ${{ env.registry_url }}
+    steps:
+      - uses: actions/checkout@v6
+        if: ${{ needs.release-please.outputs.release_created }}
+        with:
+          submodules: "recursive"
+
+      - uses: actions/download-artifact@v8
+        if: ${{ needs.release-please.outputs.release_created }}
+        with:
+          name: ${{ env.artifact_name }}
+
+      - uses: actions/setup-node@v6
+        if: ${{ needs.release-please.outputs.release_created }}
+        with:
+          node-version: ${{ env.default_node_version }}
+          registry-url: ${{ env.registry_url }}
+
+      - name: publish
+        if: ${{ needs.release-please.outputs.release_created }}
+        run: npm publish --provenance --access public --registry=${{ env.registry_url }}
