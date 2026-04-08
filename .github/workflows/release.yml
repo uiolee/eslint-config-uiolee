@@ -55,7 +55,6 @@ jobs:
     environment:
       name: npmjs
       url: https://www.npmjs.com/eslint-config-uiolee
-      deployment: ${{ needs.release-please.outputs.release_created }}
     steps:
       - uses: actions/checkout@v6
         if: ${{ needs.release-please.outputs.release_created }}
@@ -91,7 +90,6 @@ jobs:
     environment:
       name: Github Packages
       url: https://github.com/uiolee/eslint-config-uiolee/pkgs/npm/eslint-config-uiolee
-      deployment: ${{ needs.release-please.outputs.release_created }}
     steps:
       - uses: actions/checkout@v6
         if: ${{ needs.release-please.outputs.release_created }}
