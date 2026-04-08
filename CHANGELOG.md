@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/uiolee/eslint-config-uiolee/compare/v0.2.5...v0.3.0) (2026-04-08)
+
+
+### Features
+
+* **ci:** add publish  to github packages ([d4dd5e6](https://github.com/uiolee/eslint-config-uiolee/commit/d4dd5e61c9ffc70de6f0fb489bd2d7e2d030155f))
+
+
+### Bug Fixes
+
+* **ci:** fix deployment url ([92b9e4a](https://github.com/uiolee/eslint-config-uiolee/commit/92b9e4a6cda869803ffd1eab31997ce8d8975978))
+
 ## [0.2.5](https://github.com/uiolee/eslint-config-uiolee/compare/v0.2.2...v0.2.5) (2026-04-08)
 
 
