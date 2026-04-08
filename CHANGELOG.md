@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/uiolee/eslint-config-uiolee/compare/v0.2.2...v0.2.3) (2026-04-08)
+
+
+### Bug Fixes
+
+* wrong path in esbuild script ([2b6f1a6](https://github.com/uiolee/eslint-config-uiolee/commit/2b6f1a6efaf7bc8fba4c25c9beabce03e723a8d4))
+
 ## [0.2.2](https://github.com/uiolee/eslint-config-uiolee/compare/v0.2.1...v0.2.2) (2025-09-09)
 
 
