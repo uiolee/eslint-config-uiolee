@@ -30,7 +30,7 @@
   "scripts": {
     "build": "pnpm tsbf",
     "check-types": "tsc --noEmit",
-    "esb": "rm -rf dist && node scripts/esb.mjs",
+    "esb": "rm -rf lib && node scripts/esb.mjs",
     "inspect": "pnpm dlx @eslint/config-inspector@latest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
