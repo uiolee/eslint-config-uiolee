@@ -54,7 +54,8 @@ jobs:
       registry_url: "https://registry.npmjs.org"
     environment:
       name: npmjs
-      url: ${{ env.registry_url }}
+      url: https://www.npmjs.com/eslint-config-uiolee
+      deployment: ${{ needs.release-please.outputs.release_created }}
     steps:
       - uses: actions/checkout@v6
         if: ${{ needs.release-please.outputs.release_created }}
