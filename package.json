@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-uiolee",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "my eslint flat-config",
   "keywords": [
     "eslint",
