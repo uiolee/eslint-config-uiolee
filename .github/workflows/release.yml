@@ -42,8 +42,6 @@ jobs:
         id: release_please_action
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: node
-          config-file: release-please-config.json
 
   publish-npm:
     if: ${{ needs.release-please.outputs.release_created }}
