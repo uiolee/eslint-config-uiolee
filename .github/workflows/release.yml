@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "main"
+
   workflow_dispatch:
 
 env:
@@ -45,12 +46,12 @@ jobs:
           config-file: release-please-config.json
 
   publish-npm:
+    if: ${{ needs.release-please.outputs.release_created }}
     needs: release-please
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write # npm trust publisher
-    if: ${{ needs.release-please.outputs.release_created }}
+      id-token: write
     env:
       registry_url: "https://registry.npmjs.org"
     environment:
@@ -75,16 +76,15 @@ jobs:
 
       - run: npm publish --provenance --access public --registry=${{ env.registry_url }}
         if: ${{ needs.release-please.outputs.release_created }}
-        
 
   publish-ghp:
+    if: ${{ needs.release-please.outputs.release_created }}
     needs: release-please
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
       id-token: write
-    if: ${{ needs.release-please.outputs.release_created }}
     env:
       SCOPE: "@${{ github.repository_owner }}"
       registry_url: "https://npm.pkg.github.com/"
