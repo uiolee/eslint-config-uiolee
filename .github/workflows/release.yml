@@ -52,7 +52,7 @@ jobs:
     env:
       registry_url: "https://registry.npmjs.org"
     environment:
-      name: npmjs
+      name: npmjs Registry
       url: https://www.npmjs.com/eslint-config-uiolee
     steps:
       - uses: actions/checkout@v6
@@ -86,7 +86,7 @@ jobs:
       SCOPE: "@${{ github.repository_owner }}"
       registry_url: "https://npm.pkg.github.com/"
     environment:
-      name: Github Packages
+      name: Github Packages Registry
       url: https://github.com/uiolee/eslint-config-uiolee/pkgs/npm/eslint-config-uiolee
     steps:
       - uses: actions/checkout@v6
