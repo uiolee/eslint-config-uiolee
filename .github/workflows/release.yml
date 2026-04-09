@@ -11,7 +11,8 @@ env:
   default_pnpm_version: "latest"
   artifact_name: build_${{ github.sha }}
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: read
