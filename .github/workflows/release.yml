@@ -34,11 +34,6 @@ jobs:
     outputs:
       release_created: ${{ steps.release_please_action.outputs.release_created }}
     steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-          fetch-tags: true
-
       - uses: googleapis/release-please-action@v4
         id: release_please_action
         with:
