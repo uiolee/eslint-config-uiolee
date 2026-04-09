@@ -30,7 +30,7 @@ jobs:
       issues: write
       pull-requests: write
     outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
+      release_created: ${{ steps.release_please_action.outputs.release_created }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -38,7 +38,7 @@ jobs:
           fetch-tags: true
 
       - uses: googleapis/release-please-action@v4
-        id: release
+        id: release_please_action
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
