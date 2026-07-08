@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.4](https://github.com/uiolee/eslint-config-uiolee/compare/v0.3.3...v0.3.4) (2026-05-25)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump dependabot/fetch-metadata from 2 to 3 ([#56](https://github.com/uiolee/eslint-config-uiolee/issues/56)) ([31367f3](https://github.com/uiolee/eslint-config-uiolee/commit/31367f3fc4cac568f7adeb4b09173ed99cb4422f))
+* **deps:** bump googleapis/release-please-action from 4 to 5 ([#57](https://github.com/uiolee/eslint-config-uiolee/issues/57)) ([31abe08](https://github.com/uiolee/eslint-config-uiolee/commit/31abe08d11dc6a6a7a940b05aba765385edd0af7))
+* **deps:** bump pnpm/action-setup from 4 to 6 ([#58](https://github.com/uiolee/eslint-config-uiolee/issues/58)) ([825e82e](https://github.com/uiolee/eslint-config-uiolee/commit/825e82ed55f34e0e55832812dca61ef06b32ca37))
+
 ## [0.3.3](https://github.com/uiolee/eslint-config-uiolee/compare/v0.3.1...v0.3.3) (2026-04-09)
 
 
