@@ -48,7 +48,7 @@
     "typescript-eslint": "^8.42.0"
   },
   "devDependencies": {
-    "@tsconfig/node-lts": "^22.0.2",
+    "@tsconfig/node-lts": "^24.0.1",
     "@types/node": "^26.0.1",
     "esbuild": "^0.28.1",
     "esbuild-register": "^3.6.0",
